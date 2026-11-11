@@ -1,0 +1,27 @@
+{
+  "name": "database-aol",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryuto2357/database-aol.git"
+  },
+  "keywords": [],
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ryuto2357/database-aol/issues"
+  },
+  "homepage": "https://github.com/ryuto2357/database-aol#readme",
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "csv-parse": "^7.0.3"
+  }
+}
