@@ -1,7 +1,7 @@
 import { parse } from "csv-parse/sync";
 import { readFileSync } from "node:fs";
 
-const csv = readFileSync("data/online_retail_data.csv", "utf-8");
+const csv = readFileSync("data_v1/data.csv", "utf-8");
 
 type InvoiceData = {
     Invoice: string,
