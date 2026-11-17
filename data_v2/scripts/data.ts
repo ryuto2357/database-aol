@@ -1,0 +1,29 @@
+import { parse } from "csv-parse/sync";
+import { readFileSync } from "node:fs";
+
+const csv = readFileSync("data_v2/data_v2.csv", "utf-8");
+
+type InvoiceData = {
+    Invoice: string,
+    Stock: string,
+    Description: string,
+    Quantity: string,
+    Date: string,
+    Price: string,
+    Customer: string,
+    Country: string,
+}
+
+const rows = parse(csv, {
+    columns: (headers: string[]) => headers.map(header => {
+        switch (header) {
+            case "StockCode": return "Stock";
+            case "InvoiceDate": return "Date";
+            case "Customer ID": return "Customer";
+            default: return header;
+        }
+    }),
+    skip_empty_lines: true
+}) as InvoiceData[];
+
+export { rows }
