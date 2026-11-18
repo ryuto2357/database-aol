@@ -1,6 +1,7 @@
 CREATE DATABASE kodes_retail
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_bin;
+
 USE kodes_retail;
 
 CREATE TABLE Country (
@@ -38,8 +39,13 @@ CREATE TABLE Invoice (
     CancelledAt DATETIME,
     CancellationReason VARCHAR(255),
 
-    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),
-    FOREIGN KEY (CountryID) REFERENCES Country(CountryID),
+    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+        ON DELETE RESTRICT
+        ON UPDATE RESTRICT,
+
+    FOREIGN KEY (CountryID) REFERENCES Country(CountryID)
+        ON DELETE RESTRICT
+        ON UPDATE RESTRICT,
 
     CHECK (InvoiceType IN ('Sale', 'Return', 'Adjustment')),
     CHECK (Status IN ('Completed', 'Cancelled'))
@@ -53,6 +59,11 @@ CREATE TABLE InvoiceLine (
     UnitPrice DECIMAL(12,3) NOT NULL,
     OriginalDescription VARCHAR(255),
 
-    FOREIGN KEY (InvoiceNo) REFERENCES Invoice(InvoiceNo),
+    FOREIGN KEY (InvoiceNo) REFERENCES Invoice(InvoiceNo)
+        ON DELETE RESTRICT
+        ON UPDATE RESTRICT,
+
     FOREIGN KEY (StockCode) REFERENCES Product(StockCode)
+        ON DELETE RESTRICT
+        ON UPDATE RESTRICT
 );
