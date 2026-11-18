@@ -10,7 +10,7 @@ WHERE Product.StockCode = NEW.StockCode
 
 
 -- Create Function
-DELIMITER ///
+DELIMITER nahida
 
 CREATE PROCEDURE GetCustomerInvoiceHistory(IN custID INT)
 BEGIN
@@ -24,11 +24,8 @@ BEGIN
     JOIN InvoiceLine ON Invoice.InvoiceNo = InvoiceLine.InvoiceNo
     WHERE Invoice.CustomerID = custID
     GROUP BY
-        Invoice.InvoiceNo,
-        Invoice.InvoiceDate,
-        Invoice.InvoiceType,
-        Invoice.Status
+        Invoice.InvoiceNo
     ORDER BY Invoice.InvoiceDate DESC;
-END ///
+END nahida
 
 DELIMITER ;

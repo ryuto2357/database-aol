@@ -24,14 +24,17 @@ stockDescriptions.forEach((value, key) => {
     else moreDescription++;
 })
 
-console.log(noDescription, oneDescription, moreDescription);
+console.log("No Description: " + noDescription);
+console.log("One Description: " + oneDescription);
+console.log("More Description: " + moreDescription);
+// console.log(noDescription, oneDescription, moreDescription);
 
 console.log("=====");
 
 let printed = 0;
 
 stockDescriptions.forEach((descriptions, stock) => {
-    if (descriptions.size > 1 && printed < 10) {
+    if (descriptions.size > 1 && printed < 30) {
         console.log(stock, descriptions);
         printed++;
     }

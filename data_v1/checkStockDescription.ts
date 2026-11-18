@@ -31,7 +31,7 @@ for (const row of data) {
 }
 
 console.log("Empty Description: " + emptyDesc);
-console.log("Stock Length: " + stockLength);
+console.log("Stock Length:");
 console.log(stockLength);
 
 
@@ -54,8 +54,8 @@ stocks.forEach((value, key) => {
     }
 })
 
-console.log(sameDescriptionForEveryStockCode);
-console.log(multipleDescriptionForEveryStockCode);
-console.log(hasEmptyDescriptionForEveryStockCode);
+console.log("same description for every stock code: " + sameDescriptionForEveryStockCode);
+console.log("multiple description for every stock code: " + multipleDescriptionForEveryStockCode);
+console.log("has empty description for every stock code: " + hasEmptyDescriptionForEveryStockCode);
 
 let a = 0;

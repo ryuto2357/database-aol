@@ -14,6 +14,8 @@ WHERE InvoiceNo = '489434';
 
 
 -- Query 3
+
+
 SELECT
     Country.CountryName AS Country,
     SUM(InvoiceLine.Quantity * InvoiceLine.UnitPrice) AS TotalRevenue,
@@ -23,7 +25,7 @@ JOIN Invoice ON Country.CountryID = Invoice.CountryID
 JOIN InvoiceLine ON Invoice.InvoiceNo = InvoiceLine.InvoiceNo
 WHERE Invoice.Status = 'Completed'
     AND Invoice.InvoiceType = 'Sale'
-GROUP BY Country.CountryID, Country.CountryName
+GROUP BY Country.CountryID
 ORDER BY TotalRevenue DESC;
 
 
@@ -41,7 +43,7 @@ JOIN Invoice ON Customer.CustomerID = Invoice.CustomerID
 JOIN InvoiceLine ON Invoice.InvoiceNo = InvoiceLine.InvoiceNo
 WHERE Invoice.Status = 'Completed'
     AND Invoice.InvoiceType = 'Sale'
-GROUP BY Customer.CustomerID, Customer.CustomerName
+GROUP BY Customer.CustomerID
 HAVING TotalSpend > (
     SELECT SUM(InvoiceLine.Quantity * InvoiceLine.UnitPrice) / @CustomerCount
     FROM Invoice
@@ -76,6 +78,6 @@ WHERE Invoice.Status = 'Completed'
             AND Invoice.CustomerID IS NOT NULL
             AND InvoiceLine.Quantity > 0
     )
-GROUP BY Product.StockCode, Product.Description
+GROUP BY Product.StockCode
 HAVING CountryCount >= 2
 ORDER BY CountryCount DESC;
