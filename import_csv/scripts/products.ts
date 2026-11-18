@@ -78,7 +78,7 @@ const productRows = [...products.entries()].map(([stock, product]) => ({
     StockCode: stock,
     Description: product.Description,
     UnitPrice: product.UnitPrice,
-    StockQuantity: 0,
+    StockQuantity: nonStockCodes.has(stock) ? 0 : 100,
     IsStockTracked: nonStockCodes.has(stock) ? 0 : 1,
     IsActive: 1
 }));
